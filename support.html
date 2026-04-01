@@ -342,6 +342,228 @@
         .sidebar-item:active {
             background: var(--bg-body);
         }
+
+        /* ==========================================================
+           NEW INJECTED CSS FOR ANIMATIONS AND FEATURES
+           ========================================================== */
+        
+        /* Keyframes for the 40-50 animations */
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        @keyframes slideLeft { from { transform: translateX(20px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        @keyframes popIn { 0% { transform: scale(0.8); opacity: 0; } 70% { transform: scale(1.05); opacity: 1; } 100% { transform: scale(1); opacity: 1; } }
+        @keyframes floatUpDown { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+        @keyframes pulseGlow { 0%, 100% { box-shadow: 0 0 0 0 rgba(10, 58, 42, 0.4); } 50% { box-shadow: 0 0 15px 5px rgba(10, 58, 42, 0.1); } }
+        @keyframes wiggle { 0%, 100% { transform: rotate(0deg); } 25% { transform: rotate(-5deg); } 75% { transform: rotate(5deg); } }
+        @keyframes chatBubbleIn { from { transform: scale(0) translateY(10px); opacity: 0; } to { transform: scale(1) translateY(0); opacity: 1; } }
+        @keyframes customerHappyColor { 0% { color: var(--text-sub); transform: scale(1); } 50% { transform: scale(1.2); } 100% { color: var(--accent); transform: scale(1); } }
+        @keyframes burstParticle { 0% { transform: translate(0,0) scale(0); opacity: 1; } 100% { transform: translate(var(--tx), var(--ty)) scale(1.5); opacity: 0; } }
+        @keyframes typingDot { 0%, 100% { opacity: 0.2; transform: translateY(0); } 50% { opacity: 1; transform: translateY(-3px); } }
+        @keyframes spinSlow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        @keyframes underlineGrow { from { width: 0; } to { width: 100%; } }
+        @keyframes heartbeat { 0%, 100% { transform: scale(1); } 25% { transform: scale(1.1); } 50% { transform: scale(1); } 75% { transform: scale(1.1); } }
+        @keyframes colorShift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+
+        /* General Animation Classes */
+        .anim-fade { animation: fadeIn 0.6s ease-out forwards; opacity: 0; }
+        .anim-slide-up { animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; }
+        .anim-slide-left { animation: slideLeft 0.5s ease-out forwards; opacity: 0; }
+        .anim-pop { animation: popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; opacity: 0; }
+        .anim-float { animation: floatUpDown 3s ease-in-out infinite; }
+        .anim-pulse { animation: pulseGlow 2s infinite; }
+        .anim-wiggle-hover:hover { animation: wiggle 0.4s ease-in-out; }
+        .anim-spin { animation: spinSlow 8s linear infinite; }
+        
+        /* Staggered Delays for bulk animations */
+        .d-1 { animation-delay: 0.1s; } .d-2 { animation-delay: 0.2s; } .d-3 { animation-delay: 0.3s; }
+        .d-4 { animation-delay: 0.4s; } .d-5 { animation-delay: 0.5s; } .d-6 { animation-delay: 0.6s; }
+        .d-7 { animation-delay: 0.7s; } .d-8 { animation-delay: 0.8s; } .d-9 { animation-delay: 0.9s; }
+        .d-10 { animation-delay: 1.0s; } .d-11 { animation-delay: 1.1s; } .d-12 { animation-delay: 1.2s; }
+
+        /* Customer Support Lady Scene Styles */
+        .support-scene-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0 40px;
+            position: relative;
+            height: 80px;
+        }
+        .scene-agent, .scene-customer {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            position: relative;
+            z-index: 2;
+            box-shadow: var(--shadow-md);
+        }
+        .scene-agent {
+            background: var(--primary);
+            color: white;
+            animation: floatUpDown 4s ease-in-out infinite;
+        }
+        .scene-customer {
+            background: #e2e8f0;
+            color: var(--text-sub);
+            animation: customerHappyColor 1s ease-in-out 3s forwards, floatUpDown 4s ease-in-out 0.5s infinite;
+        }
+        .scene-bubbles {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 40px;
+            z-index: 1;
+        }
+        .scene-bubble {
+            background: white;
+            border-radius: 12px;
+            padding: 8px 12px;
+            font-size: 12px;
+            font-weight: 600;
+            box-shadow: var(--shadow-sm);
+            opacity: 0;
+            border: 1px solid var(--border-subtle);
+        }
+        .scene-bubble.agent-talk {
+            animation: chatBubbleIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.5s forwards, fadeOut 0.5s 2.5s forwards;
+            color: var(--primary);
+            position: relative;
+            left: -20px;
+        }
+        .scene-bubble.customer-talk {
+            animation: chatBubbleIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 3.5s forwards;
+            color: var(--success);
+            position: relative;
+            right: -20px;
+        }
+        @keyframes fadeOut { to { opacity: 0; transform: scale(0); } }
+        
+        .scene-hearts {
+            position: absolute;
+            font-size: 18px;
+            color: #ff4757;
+            opacity: 0;
+            z-index: 3;
+        }
+        .heart-1 { --tx: 30px; --ty: -40px; animation: burstParticle 1s ease-out 3.2s forwards; right: 0; top: 10px; }
+        .heart-2 { --tx: 10px; --ty: -50px; animation: burstParticle 1s ease-out 3.4s forwards; right: 10px; top: 0px; }
+        .heart-3 { --tx: -20px; --ty: -30px; animation: burstParticle 1s ease-out 3.6s forwards; right: 20px; top: 20px; }
+
+        /* 10 New Features Styles */
+        .feature-section {
+            margin-top: 32px;
+            border-top: 1px solid var(--border-subtle);
+            padding-top: 24px;
+        }
+        .feature-title {
+            font-size: 18px;
+            color: var(--primary);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        /* F1: FAQ Accordion */
+        .faq-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            margin-bottom: 8px;
+            padding: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .faq-item:hover { border-color: var(--primary); }
+        .faq-q { font-weight: 600; font-size: 14px; display: flex; justify-content: space-between; }
+        .faq-a { font-size: 13px; color: var(--text-sub); margin-top: 8px; display: none; }
+        
+        /* F2: Support Ticket Tracker */
+        .ticket-tracker {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: 16px;
+            padding: 20px;
+            color: white;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+        }
+        .ticket-input {
+            background: rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 8px;
+            padding: 10px;
+            color: white;
+            width: 100%;
+            margin: 12px 0;
+        }
+        .ticket-input::placeholder { color: rgba(255,255,255,0.6); }
+        .ticket-btn { background: var(--accent); color: white; padding: 10px 20px; border-radius: 8px; font-weight: 600; }
+
+        /* F3: Callback Request Form */
+        .callback-form { background: var(--bg-card); padding: 20px; border-radius: 16px; border: 1px solid var(--border-subtle); }
+        .cb-input { width: 100%; padding: 12px; border: 1px solid var(--border-subtle); border-radius: 8px; margin-bottom: 12px; font-size: 14px; }
+        .cb-btn { width: 100%; background: var(--primary); color: white; padding: 12px; border-radius: 8px; font-weight: 600; }
+
+        /* F4: Knowledge Base Search */
+        .kb-search { display: flex; gap: 8px; margin-bottom: 24px; }
+        .kb-search input { flex: 1; padding: 12px 16px; border-radius: 20px; border: 1px solid var(--border-subtle); background: var(--bg-card); }
+        .kb-search button { background: var(--primary); color: white; width: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+
+        /* F5: Quick Feedback Rating */
+        .rating-box { text-align: center; padding: 20px; background: var(--bg-card); border-radius: 16px; }
+        .stars { display: flex; justify-content: center; gap: 8px; font-size: 24px; color: var(--border-subtle); margin-top: 12px; }
+        .stars i:hover { color: var(--accent); cursor: pointer; animation: popIn 0.3s forwards; }
+
+        /* F6: Video Guides */
+        .video-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .video-card { background: var(--bg-card); border-radius: 12px; overflow: hidden; border: 1px solid var(--border-subtle); position: relative; }
+        .vid-thumb { height: 80px; background: #cbd5e1; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; }
+        .vid-title { padding: 8px; font-size: 11px; font-weight: 600; text-align: center; }
+
+        /* F7: Business Hours Table */
+        .hours-card { background: var(--bg-card); border-radius: 16px; padding: 16px; border: 1px solid var(--border-subtle); }
+        .hour-row { display: flex; justify-content: space-between; font-size: 13px; padding: 6px 0; border-bottom: 1px dashed var(--border-subtle); }
+        .hour-row:last-child { border: none; }
+        .hour-today { color: var(--success); font-weight: 600; }
+
+        /* F8: Social Links */
+        .social-flex { display: flex; justify-content: center; gap: 16px; margin: 24px 0; }
+        .social-btn { width: 40px; height: 40px; border-radius: 50%; background: var(--bg-card); border: 1px solid var(--border-subtle); display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 18px; transition: 0.3s; }
+        .social-btn:hover { background: var(--primary); color: white; transform: translateY(-3px); }
+
+        /* F9: Location Map Placeholder */
+        .map-box { height: 120px; background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect fill="%23e2e8f0" width="100" height="100"/><text x="50" y="50" font-family="Arial" font-size="10" fill="%2364748b" text-anchor="middle" alignment-baseline="middle">Map View Placeholder</text></svg>') center/cover; border-radius: 16px; margin-bottom: 16px; position: relative; border: 1px solid var(--border-subtle); }
+        .map-pin { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #ef4444; font-size: 24px; animation: floatUpDown 2s infinite; }
+
+        /* F10: Live Chat Floating Button */
+        .fab-chat {
+            position: fixed;
+            bottom: calc(20px + var(--safe-bottom));
+            right: 20px;
+            width: 56px;
+            height: 56px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 4px 15px rgba(10, 58, 42, 0.4);
+            z-index: 1000;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .fab-chat:active { transform: scale(0.9); }
+        .fab-badge { position: absolute; top: 0; right: 0; width: 12px; height: 12px; background: #ef4444; border-radius: 50%; border: 2px solid white; animation: heartbeat 2s infinite; }
+
     </style>
 </head>
 <body>
@@ -361,15 +583,33 @@
         <main class="support-main">
             
             <div class="hero-section">
-                <div class="hero-icon">
+                <div class="support-scene-container anim-fade">
+                    <div class="scene-agent"><i class="ri-customer-service-2-fill"></i></div>
+                    <div class="scene-bubbles">
+                        <div class="scene-bubble agent-talk"><i class="ri-more-fill" style="animation: typingDot 1s infinite"></i></div>
+                        <div class="scene-bubble customer-talk">Thank you!</div>
+                    </div>
+                    <div class="scene-customer">
+                        <i class="ri-user-smile-fill"></i>
+                        <i class="ri-heart-fill scene-hearts heart-1"></i>
+                        <i class="ri-star-fill scene-hearts heart-2"></i>
+                        <i class="ri-heart-fill scene-hearts heart-3"></i>
+                    </div>
+                </div>
+
+                <div class="hero-icon anim-pop d-1">
                     <i class="ri-customer-service-2-fill"></i>
                 </div>
-                <h1 class="hero-title brand-font">How can we help?</h1>
-                <p class="hero-subtitle">Experience premium assistance. Choose your preferred method to connect with our concierge team.</p>
+                <h1 class="hero-title brand-font anim-slide-up d-2">How can we help?</h1>
+                <p class="hero-subtitle anim-slide-up d-3">Experience premium assistance. Choose your preferred method to connect with our concierge team.</p>
             </div>
 
-            <a href="mailto:support.himkala@gmail.com" class="contact-card">
-                <div class="card-icon">
+            <p class="anim-fade d-4" style="font-size: 12px; color: var(--text-sub); text-align: center; margin-bottom: 16px;">
+                You are redirected to these numbers on click.
+            </p>
+
+            <a href="mailto:support.himkala@gmail.com" class="contact-card anim-slide-left d-5 anim-wiggle-hover">
+                <div class="card-icon anim-pulse">
                     <i class="ri-mail-send-line"></i>
                 </div>
                 <div class="card-content">
@@ -380,8 +620,8 @@
                 </div>
             </a>
 
-            <a href="tel:01899293482" class="contact-card">
-                <div class="card-icon">
+            <a href="tel:01899293482" class="contact-card anim-slide-left d-6 anim-wiggle-hover">
+                <div class="card-icon anim-pulse">
                     <i class="ri-phone-line"></i>
                 </div>
                 <div class="card-content">
@@ -392,8 +632,8 @@
                 </div>
             </a>
 
-            <a href="https://wa.me/917018760836" target="_blank" rel="noopener noreferrer" class="contact-card whatsapp-card">
-                <div class="card-icon">
+            <a href="https://wa.me/917018760836" target="_blank" rel="noopener noreferrer" class="contact-card whatsapp-card anim-slide-left d-7 anim-wiggle-hover">
+                <div class="card-icon anim-spin">
                     <i class="ri-whatsapp-line"></i>
                 </div>
                 <div class="card-content">
@@ -403,7 +643,7 @@
                 </div>
             </a>
 
-            <div class="trust-section">
+            <div class="trust-section anim-fade d-8">
                 <div class="info-row">
                     <i class="ri-time-line info-icon"></i>
                     <div class="info-text">Standard email response within <strong>3-4 business days</strong>.</div>
@@ -414,7 +654,100 @@
                 </div>
             </div>
 
+            <div class="feature-section anim-slide-up d-9">
+                <h3 class="feature-title brand-font"><i class="ri-book-open-line"></i> Help Center</h3>
+                <div class="kb-search">
+                    <input type="text" placeholder="Search guides, policies...">
+                    <button class="anim-wiggle-hover"><i class="ri-search-line"></i></button>
+                </div>
+            </div>
+
+            <div class="feature-section anim-slide-up d-10">
+                <h3 class="feature-title brand-font"><i class="ri-question-answer-line"></i> Frequent Queries</h3>
+                <div class="faq-item" onclick="this.querySelector('.faq-a').style.display = this.querySelector('.faq-a').style.display === 'block' ? 'none' : 'block'">
+                    <div class="faq-q">Shipping duration? <i class="ri-add-line"></i></div>
+                    <div class="faq-a anim-fade">Standard delivery takes 5-7 business days across India.</div>
+                </div>
+                <div class="faq-item" onclick="this.querySelector('.faq-a').style.display = this.querySelector('.faq-a').style.display === 'block' ? 'none' : 'block'">
+                    <div class="faq-q">Return Policy? <i class="ri-add-line"></i></div>
+                    <div class="faq-a anim-fade">We offer a 7-day hassle-free return on premium items.</div>
+                </div>
+            </div>
+
+            <div class="feature-section anim-pop d-11">
+                <div class="ticket-tracker">
+                    <h3 class="brand-font" style="margin-bottom:4px"><i class="ri-ticket-2-line"></i> Track Status</h3>
+                    <p style="font-size:12px; opacity:0.8">Enter your Ticket ID</p>
+                    <input type="text" class="ticket-input" placeholder="#HK-XXXX">
+                    <button class="ticket-btn anim-wiggle-hover">Check Status</button>
+                </div>
+            </div>
+
+            <div class="feature-section anim-slide-up d-12">
+                <h3 class="feature-title brand-font"><i class="ri-phone-camera-line"></i> Request Callback</h3>
+                <div class="callback-form">
+                    <input type="text" class="cb-input" placeholder="Your Name">
+                    <input type="tel" class="cb-input" placeholder="Phone Number">
+                    <button class="cb-btn anim-wiggle-hover">Schedule Call</button>
+                </div>
+            </div>
+
+            <div class="feature-section anim-slide-up d-12">
+                <h3 class="feature-title brand-font"><i class="ri-play-circle-line"></i> Quick Tutorials</h3>
+                <div class="video-grid">
+                    <div class="video-card anim-wiggle-hover">
+                        <div class="vid-thumb"><i class="ri-play-fill anim-pulse"></i></div>
+                        <div class="vid-title">How to Track Order</div>
+                    </div>
+                    <div class="video-card anim-wiggle-hover">
+                        <div class="vid-thumb"><i class="ri-play-fill anim-pulse"></i></div>
+                        <div class="vid-title">Return Process Guide</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="feature-section anim-fade d-12">
+                <h3 class="feature-title brand-font"><i class="ri-time-line"></i> Operation Hours</h3>
+                <div class="hours-card">
+                    <div class="hour-row"><span class="hour-today">Monday - Friday</span><span class="hour-today">09:00 - 18:00</span></div>
+                    <div class="hour-row"><span>Saturday</span><span>10:00 - 16:00</span></div>
+                    <div class="hour-row"><span>Sunday</span><span>Closed</span></div>
+                </div>
+            </div>
+
+            <div class="feature-section anim-slide-up d-12">
+                <h3 class="feature-title brand-font"><i class="ri-map-pin-line"></i> Headquarters</h3>
+                <div class="map-box">
+                    <i class="ri-map-pin-user-fill map-pin"></i>
+                </div>
+                <p style="font-size:13px; color:var(--text-sub); text-align:center;">Chamba, Himachal Pradesh, India</p>
+            </div>
+
+            <div class="feature-section anim-pop d-12">
+                <div class="rating-box">
+                    <h3 class="brand-font" style="color:var(--primary); font-size:16px;">Rate your experience</h3>
+                    <div class="stars">
+                        <i class="ri-star-line"></i><i class="ri-star-line"></i><i class="ri-star-line"></i><i class="ri-star-line"></i><i class="ri-star-line"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="feature-section anim-fade d-12" style="border-bottom:none;">
+                <h3 class="feature-title brand-font" style="justify-content:center;">Connect With Us</h3>
+                <div class="social-flex">
+                    <a href="#" class="social-btn"><i class="ri-instagram-line"></i></a>
+                    <a href="#" class="social-btn"><i class="ri-facebook-circle-line"></i></a>
+                    <a href="#" class="social-btn"><i class="ri-twitter-x-line"></i></a>
+                    <a href="#" class="social-btn"><i class="ri-youtube-line"></i></a>
+                </div>
+            </div>
+
         </main>
+
+        <div class="fab-chat anim-pop" style="animation-delay: 1.5s;">
+            <i class="ri-chat-smile-3-line"></i>
+            <div class="fab-badge"></div>
+        </div>
 
         <div class="sidebar-backdrop" id="sidebarBackdrop" onclick="closeSidebar()"></div>
         <div class="sidebar" id="sidebar">
@@ -453,6 +786,24 @@
             sidebar.classList.remove('active');
             sidebarBackdrop.classList.remove('active');
         }
+
+        // Feature 5 rating interactive logic to trigger animations
+        document.querySelectorAll('.stars i').forEach((star, index) => {
+            star.addEventListener('click', () => {
+                let allStars = document.querySelectorAll('.stars i');
+                allStars.forEach((s, i) => {
+                    if(i <= index) {
+                        s.classList.remove('ri-star-line');
+                        s.classList.add('ri-star-fill');
+                        s.style.color = 'var(--accent)';
+                    } else {
+                        s.classList.remove('ri-star-fill');
+                        s.classList.add('ri-star-line');
+                        s.style.color = 'var(--border-subtle)';
+                    }
+                });
+            });
+        });
     </script>
 </body>
 </html>
