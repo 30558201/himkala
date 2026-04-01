@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Privacy Policy | Himkala Premium</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #0A3A2A;
+            --primary-light: #125740;
+            --accent: #D4AF37;
+            --bg-body: #F8FAFC;
+            --bg-card: #FFFFFF;
+            --text-main: #0F172A;
+            --text-sub: #475569;
+            --border-subtle: #E2E8F0;
+            --success: #25D366;
+            --warning: #F59E0B;
+            
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 12px 24px rgba(0, 0, 0, 0.08);
+            
+            --safe-top: env(safe-area-inset-top, 0px);
+            --safe-bottom: env(safe-area-inset-bottom, 0px);
+            --header-height: calc(60px + var(--safe-top));
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            overscroll-behavior-y: none;
+        }
+
+        h1, h2, h3, .brand-font {
+            font-family: 'Playfair Display', serif;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            font-family: inherit;
+            outline: none;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+        }
+
+        .app-container {
+            max-width: 480px;
+            margin: 0 auto;
+            min-height: 100vh;
+            background: var(--bg-body);
+            position: relative;
+            box-shadow: 0 0 40px rgba(0,0,0,0.05);
+        }
+
+        /* --- HEADER --- */
+        .app-header {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: var(--safe-top) 16px 0;
+            height: var(--header-height);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 100;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .menu-btn {
+            font-size: 24px;
+            color: var(--primary);
+            padding: 8px;
+            margin-left: -8px;
+            display: flex;
+            align-items: center;
+            transition: opacity 0.2s;
+        }
+
+        .brand-logo {
+            height: 28px;
+            display: flex;
+            align-items: center;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 20px;
+        }
+
+        .header-spacer {
+            width: 40px;
+        }
+
+        /* --- MAIN CONTENT --- */
+        .policy-main {
+            padding: 32px 20px calc(40px + var(--safe-bottom));
+        }
+
+        /* Hero Section */
+        .hero-section {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .hero-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, rgba(10, 58, 42, 0.05) 0%, rgba(10, 58, 42, 0.1) 100%);
+            color: var(--primary);
+            font-size: 32px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .hero-title {
+            font-size: 28px;
+            color: var(--primary);
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 14px;
+            color: var(--text-sub);
+            max-width: 300px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Policy Cards */
+        .policy-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 16px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .policy-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            border-bottom: 1px solid var(--border-subtle);
+            padding-bottom: 12px;
+        }
+
+        .policy-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: rgba(10, 58, 42, 0.04);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .policy-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--primary);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .policy-content {
+            font-size: 14px;
+            color: var(--text-sub);
+            line-height: 1.7;
+        }
+
+        .policy-content ul {
+            margin-top: 8px;
+            padding-left: 20px;
+        }
+
+        .policy-content li {
+            margin-bottom: 6px;
+        }
+
+        .notice-box {
+            background: rgba(245, 158, 11, 0.1);
+            border-left: 4px solid var(--warning);
+            padding: 16px;
+            border-radius: 0 12px 12px 0;
+            margin-top: 16px;
+            font-weight: 500;
+            color: #B45309;
+            font-size: 13.5px;
+        }
+
+        /* --- SIDEBAR DRAWER --- */
+        .sidebar-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.4);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            z-index: 2000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .sidebar-backdrop.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 280px;
+            background: var(--bg-card);
+            z-index: 2001;
+            transform: translateX(-100%);
+            transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+            padding-top: calc(var(--safe-top) + 20px);
+            display: flex;
+            flex-direction: column;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .sidebar.active {
+            transform: translateX(0);
+        }
+
+        .sidebar-header {
+            padding: 0 24px 24px;
+            border-bottom: 1px solid var(--border-subtle);
+            margin-bottom: 12px;
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .sidebar-nav {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-item {
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-main);
+            transition: background 0.2s;
+        }
+
+        .sidebar-item i {
+            font-size: 20px;
+            color: var(--primary);
+            opacity: 0.8;
+        }
+
+        .sidebar-item:active {
+            background: var(--bg-body);
+        }
+
+        /* Animations */
+        @keyframes slideUpFade {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        @keyframes scaleIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .anim-slide-up { animation: slideUpFade 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; }
+        .anim-scale { animation: scaleIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; opacity: 0; }
+        
+        .d-1 { animation-delay: 0.1s; }
+        .d-2 { animation-delay: 0.2s; }
+        .d-3 { animation-delay: 0.3s; }
+        .d-4 { animation-delay: 0.4s; }
+        .d-5 { animation-delay: 0.5s; }
+        .d-6 { animation-delay: 0.6s; }
+
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+        
+        <header class="app-header">
+            <button class="menu-btn" onclick="toggleSidebar()" aria-label="Menu">
+                <i class="ri-menu-2-line"></i>
+            </button>
+            <div class="brand-logo">
+                Himkala
+            </div>
+            <div class="header-spacer"></div>
+        </header>
+
+        <main class="policy-main">
+            
+            <div class="hero-section">
+                <div class="hero-icon anim-scale">
+                    <i class="ri-shield-check-fill"></i>
+                </div>
+                <h1 class="hero-title brand-font anim-slide-up d-1">Privacy & Policies</h1>
+                <p class="hero-subtitle anim-slide-up d-2">Committed to your privacy, purity, and delivering a premium homemade experience.</p>
+            </div>
+
+            <div class="policy-card anim-slide-up d-3">
+                <div class="policy-header">
+                    <div class="policy-icon"><i class="ri-store-2-line"></i></div>
+                    <div class="policy-title">About Himkala</div>
+                </div>
+                <div class="policy-content">
+                    <p>Himkala is a premium eCommerce platform dedicated to offering authentic food products, exquisite embroidery pieces, and natural beauty products (such as shampoos, soaps, and personal care items).</p>
+                </div>
+            </div>
+
+            <div class="policy-card anim-slide-up d-4">
+                <div class="policy-header">
+                    <div class="policy-icon"><i class="ri-leaf-line"></i></div>
+                    <div class="policy-title">Our Natural Promise</div>
+                </div>
+                <div class="policy-content">
+                    <p>We take pride in offering products that are completely homemade and prepared using traditional, natural methods.</p>
+                    <ul>
+                        <li>We only use the essential ingredients required for the product.</li>
+                        <li>No unnecessary chemicals, preservatives, or acidity regulators are added.</li>
+                        <li>We always strive to make our products safe, natural, and beautifully prepared while maintaining the highest standards of quality and hygiene.</li>
+                    </ul>
+                    <p style="margin-top: 8px;">Our ultimate goal is to provide pure, natural, and high-quality homemade products prepared with genuine care.</p>
+                </div>
+            </div>
+
+            <div class="policy-card anim-slide-up d-5">
+                <div class="policy-header">
+                    <div class="policy-icon"><i class="ri-truck-line"></i></div>
+                    <div class="policy-title">Delivery & Support</div>
+                </div>
+                <div class="policy-content">
+                    <p><strong>Free Delivery:</strong> We are proud to provide free delivery across India for all our customers.</p>
+                    <p style="margin-top: 8px;"><strong>Customer Contact:</strong> We stand by our products even after they arrive. Customers can always contact us for support after delivery if they have any questions, concerns, or need assistance.</p>
+                </div>
+            </div>
+
+            <div class="policy-card anim-slide-up d-6">
+                <div class="policy-header">
+                    <div class="policy-icon"><i class="ri-arrow-go-back-line"></i></div>
+                    <div class="policy-title">Return Policy</div>
+                </div>
+                <div class="policy-content">
+                    <p>Due to the nature of our natural and homemade goods, <strong>products generally cannot be returned once delivered.</strong></p>
+                    <p style="margin-top: 8px;">However, returns may be accepted strictly under valid situations, such as:</p>
+                    <ul>
+                        <li>The product was damaged during delivery.</li>
+                        <li>The issue is thoroughly reviewed and verified by our support team.</li>
+                    </ul>
+                    <p><em>Returns will be processed only after proper review and approval by Himkala.</em></p>
+
+                    <div class="notice-box">
+                        <i class="ri-error-warning-fill"></i> Important Notice: <br>
+                        If you are unsure about the product or do not wish to keep it, please avoid placing the order to help us prevent waste.
+                    </div>
+                </div>
+            </div>
+
+            <div class="policy-card anim-slide-up d-6" style="animation-delay: 0.7s;">
+                <div class="policy-header">
+                    <div class="policy-icon"><i class="ri-lock-2-line"></i></div>
+                    <div class="policy-title">Privacy & Customer Data</div>
+                </div>
+                <div class="policy-content">
+                    <p>Your trust is important to us. Customer information—such as your name, address, and contact details—is collected and used <strong>strictly</strong> for order processing, delivery, and providing customer support.</p>
+                    <p style="margin-top: 8px;">We guarantee that your personal data is secure with us and will never be misused, sold, or shared with unauthorized third parties.</p>
+                </div>
+            </div>
+
+        </main>
+
+        <div class="sidebar-backdrop" id="sidebarBackdrop" onclick="closeSidebar()"></div>
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                Himkala
+            </div>
+            <div class="sidebar-nav">
+                <a href="https://30558201.github.io/himkala/index.html" class="sidebar-item">
+                    <i class="ri-home-4-line"></i> Home Page
+                </a>
+                <a href="https://30558201.github.io/himkala/about.html" class="sidebar-item">
+                    <i class="ri-information-line"></i> About
+                </a>
+                <a href="https://30558201.github.io/himkala/support.html" class="sidebar-item">
+                    <i class="ri-customer-service-2-line"></i> Support
+                </a>
+                <a href="https://30558201.github.io/himkala/policy.html" class="sidebar-item" style="color: var(--primary); background: var(--bg-body); font-weight: 600;">
+                    <i class="ri-shield-check-fill"></i> Privacy Policy
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const sidebarBackdrop = document.getElementById('sidebarBackdrop');
+
+        function toggleSidebar() {
+            const isActive = sidebar.classList.contains('active');
+            if (isActive) {
+                closeSidebar();
+            } else {
+                sidebar.classList.add('active');
+                sidebarBackdrop.classList.add('active');
+            }
+        }
+
+        function closeSidebar() {
+            sidebar.classList.remove('active');
+            sidebarBackdrop.classList.remove('active');
+        }
+    </script>
+</body>
+</html>
